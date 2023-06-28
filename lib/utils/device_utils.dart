@@ -1,11 +1,9 @@
 import 'dart:io';
-import 'dart:ui' as ui show window;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../common.dart';
-
 
 class DeviceUtils {
   static bool get isDesktop => !isWeb && (isWindows || isLinux || isMacOS);
@@ -28,36 +26,36 @@ class DeviceUtils {
 
   /// 屏幕宽
   ///
-  static double get width {
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+  static double width(context) {
+    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
     return mediaQuery.size.width;
   }
 
   /// 屏幕高
   ///
-  static double get height {
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+  static double height(context) {
+    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
     return mediaQuery.size.height;
   }
 
   /// 标题栏高度（包括状态栏）
   ///
-  static double get navigationBarHeight {
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+  static double navigationBarHeight(context) {
+    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
     return mediaQuery.padding.top + kToolbarHeight;
   }
 
   /// 状态栏高度
   ///
-  static double get topSafeHeight {
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+  static double topSafeHeight(context) {
+    MediaQueryData mediaQuery = MediaQueryData.fromView((context));
     return mediaQuery.padding.top;
   }
 
   /// 底部状态栏高度
   ///
-  static double get bottomSafeHeight {
-    MediaQueryData mediaQuery = MediaQueryData.fromWindow(ui.window);
+  static double bottomSafeHeight(context) {
+    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
     return mediaQuery.padding.bottom;
   }
 
@@ -80,7 +78,14 @@ class DeviceUtils {
   }
 
   /// 设置底部间距
-  static double setBottomMargin(double margin) => bottomSafeHeight == 0 ? margin : bottomSafeHeight;
+  static double setBottomMargin(double margin, BuildContext context) {
+    double safeHeight = bottomSafeHeight(context);
+    if (safeHeight == 0) {
+      return margin;
+    } else {
+      return safeHeight;
+    }
+  }
 
   /// 竖屏
   static void lockScreenPortrait() {

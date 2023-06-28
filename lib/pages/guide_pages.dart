@@ -25,10 +25,7 @@ class _SplashPageState extends State<SplashPage> {
           index--;
         } else {
           //跳转到引导页面
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const GuidePage()),
-          );
+          NavigatorUtil.goNewPage(context, const GuidePage(),replace:true);
           index = 0;
           timer.cancel();
         }

@@ -14,13 +14,13 @@ class NavigatorUtil {
 
   static Future goNewPage(BuildContext? context, Widget newPage,
       {bool fullscreenDialog = false, bool replace = false}) {
-     DeviceUtils.hideKeyboard(context!);
+    DeviceUtils.hideKeyboard(context!);
 
     if (replace) {
-      return Navigator.of(context!).pushReplacement(
+      return Navigator.of(context).pushReplacement(
           MaterialWithModalsPageRoute(builder: (BuildContext context) => newPage, fullscreenDialog: fullscreenDialog));
     } else {
-      return Navigator.of(context!).push(
+      return Navigator.of(context).push(
           MaterialWithModalsPageRoute(builder: (BuildContext context) => newPage, fullscreenDialog: fullscreenDialog));
     }
   }

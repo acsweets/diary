@@ -5,3 +5,4 @@ export 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 export 'utils/log_utils.dart';
 export 'utils/device_utils.dart';
+export 'route/navgator_util.dart';

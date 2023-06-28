@@ -272,11 +272,12 @@ packages:
   modal_bottom_sheet:
     dependency: "direct main"
     description:
-      name: modal_bottom_sheet
-      sha256: ef533916a2c3089571c32bd34e410faca77a6849a3f28f748e0794525c5658a0
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.1.2"
+      path: modal_bottom_sheet
+      ref: "3.0.0-pre+1-idn_version"
+      resolved-ref: ee32cf491f5bae4f65c7bb04548ea0653e87536f
+      url: "https://github.com/bayysp/modal_bottom_sheet.git"
+    source: git
+    version: "3.0.0-pre"
   package_config:
     dependency: transitive
     description:
