@@ -1,9 +1,9 @@
 import 'package:diary/pages/front_page.dart';
 import 'package:diary/pages/guide_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_utils/intl_utils.dart';
+import 'common.dart';
 void main() {
-  runApp( const MyApp());
+  runApp( ScreenUtilInit(designSize: const Size(414, 896), builder: (_, child) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner :false,
       title: '心情日记',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:   SplashPage(),
+      home:   const SplashPage(),
     );
   }
 }

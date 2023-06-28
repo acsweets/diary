@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:diary/common.dart';
 import 'package:flutter/material.dart';
 import 'front_page.dart';
 
@@ -11,7 +12,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  int index = 4;
+  int index = 2;
   late Timer _timer;
   bool isFirst = true;
 
@@ -41,9 +42,34 @@ class _SplashPageState extends State<SplashPage> {
       body: Stack(
         children: [
           Container(
-            color: Colors.cyan,
+            padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 25.w),
             width: double.infinity,
             height: double.infinity,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xffF0D9EA), Color(0xffE9F5FE)],
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('生\n活\n的\n美\n好',
+                    style:
+                        TextStyle(color: Colors.black, fontSize: 50.sp, fontFamily: 'mo', fontWeight: FontWeight.w400)),
+                Padding(
+                  padding: EdgeInsets.only(top: 30.w, left: 25.w, right: 25.w),
+                  child: Text("是\n闻\n一\n朵\n花\n香",
+                      style: TextStyle(
+                          color: Colors.black, fontSize: 50.sp, fontFamily: 'mo', fontWeight: FontWeight.w400)),
+                ),
+                Text("见\n一\n见\n太\n阳",
+                    style:
+                        TextStyle(color: Colors.black, fontSize: 50.sp, fontFamily: 'mo', fontWeight: FontWeight.w400)),
+              ],
+            ),
           ),
           Positioned(
               top: 40,
@@ -52,8 +78,12 @@ class _SplashPageState extends State<SplashPage> {
                 width: 50,
                 height: 27,
                 alignment: Alignment.center,
-                decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(40)),
-                child: Text("${index}"),
+                decoration: BoxDecoration(
+                    color: const Color(0xffC9E3E7).withOpacity(0.4), borderRadius: BorderRadius.circular(40)),
+                child: Text(
+                  "$index",
+                  style: const TextStyle(color: Color(0xffD3BCE8)),
+                ),
               ))
         ],
       ),
@@ -91,24 +121,6 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
     });
   }
 
-  final List<Widget> listImage = [
-    Container(
-      color: Colors.green,
-      width: double.infinity,
-      height: double.infinity,
-    ),
-    Container(
-      color: Colors.indigoAccent,
-      width: double.infinity,
-      height: double.infinity,
-    ),
-    Container(
-      color: Colors.deepPurple,
-      width: double.infinity,
-      height: double.infinity,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,11 +129,60 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
           TabBarView(
             controller: _tabController,
             children: [
-              listImage[0],
-              listImage[1],
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xff4D87C4), Color(0xffF09C2B)],
+                  ),
+                ),
+                width: double.infinity,
+                height: double.infinity,
+
+                child:      Center(
+                  child: Text("梦\n想",
+                      style: TextStyle(
+                          color: Colors.black, fontSize: 100.sp, fontFamily: 'xingshu', fontWeight: FontWeight.w400)),
+                ),
+              ),
+              Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Color(0xff4D87C4), Color(0xffF09C2B)],
+                    ),
+                  ),
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Center(
+                    child: Text("记\n录",
+                        style: TextStyle(
+                            color: Colors.black, fontSize: 100.sp, fontFamily: 'xingshu', fontWeight: FontWeight.w400)),
+                  )),
               Stack(
                 children: [
-                  listImage[2],
+                  Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xff4D87C4), Color(0xffF09C2B)],
+                        //    colors: [Color(0xffF8C8A7), Color(0xff7FEC74)],
+                      ),
+                    ),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Center(
+                      child: Text("生\n活",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 100.sp,
+                              fontFamily: 'xingshu',
+                              fontWeight: FontWeight.w400)),
+                    ),
+                  ),
                   Container(
                     margin: const EdgeInsets.only(bottom: 80),
                     child: Align(
@@ -130,15 +191,23 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => FrontPage()),
+                            MaterialPageRoute(builder: (context) => const FrontPage()),
                           );
                         },
                         child: Container(
                           width: 150,
                           height: 40,
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(40)),
-                          child: const Text("欢迎使用心情日记"),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            gradient: const LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                               colors: [Color(0xff7EAFE0),Color(0xffF09C2B),Color(0xff7EAFE0),],
+                           //   colors: [Color(0xffF8C8A7), Color(0xff7FEC74)],
+                            ),
+                          ),
+                          child: const Text("欢迎使用心情日记>"),
                         ),
                       ),
                     ),
@@ -155,7 +224,7 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                   alignment: Alignment.bottomCenter,
                   child: TabPageSelector(
                     controller: _tabController,
-                    selectedColor: Colors.amberAccent,
+                    selectedColor: const Color(0xff7EAFE0),
                     indicatorSize: 17,
                     color: Colors.black12,
                   ),
