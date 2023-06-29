@@ -55,7 +55,6 @@ class _FrontPageState extends State<FrontPage> {
             backgroundColor: Colors.white,
           ),
         ],
-
         // 设置当前（即被选中时）页面
         currentIndex: _selectedIndex,
         onTap: (int index) {
