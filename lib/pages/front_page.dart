@@ -26,7 +26,7 @@ class _FrontPageState extends State<FrontPage> {
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 12.0,
         // 被选中时的字体大小
-        unselectedFontSize: 14.0,
+        unselectedFontSize: 16.0,
         // 未被选中时的字体大小
         showSelectedLabels: true,
         // 被选中时是否显示Label
@@ -34,7 +34,7 @@ class _FrontPageState extends State<FrontPage> {
         // 未被选中时是否显示Label
         enableFeedback: true,
         //点击会产生咔嗒声，长按会产生短暂的振动
-        selectedItemColor: Colors.orange,
+        selectedItemColor: Colors.black,
         // 设置被选中时的图标颜色
         unselectedItemColor: Colors.grey,
         // 设置未被选中时的图标颜色

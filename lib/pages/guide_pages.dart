@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
           index--;
         } else {
           //跳转到引导页面
-          NavigatorUtil.goNewPage(context, const GuidePage(),replace:true);
+          NavigatorUtil.goNewPage(context, const GuidePage(), replace: true);
           index = 0;
           timer.cancel();
         }
@@ -136,8 +136,7 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                 ),
                 width: double.infinity,
                 height: double.infinity,
-
-                child:      Center(
+                child: Center(
                   child: Text("梦\n想",
                       style: TextStyle(
                           color: Colors.black, fontSize: 100.sp, fontFamily: 'xingshu', fontWeight: FontWeight.w400)),
@@ -186,10 +185,10 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const FrontPage()),
-                          );
+                          NavigatorUtil.goNewPage(context, const FrontPage(), replace: true);
+
+                          // Navigator.of(context).pushReplacement(
+                          //   MaterialPageRoute(builder: (context) => const FrontPage()),);
                         },
                         child: Container(
                           width: 150,
@@ -200,8 +199,12 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                             gradient: const LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                               colors: [Color(0xff7EAFE0),Color(0xffF09C2B),Color(0xff7EAFE0),],
-                           //   colors: [Color(0xffF8C8A7), Color(0xff7FEC74)],
+                              colors: [
+                                Color(0xff7EAFE0),
+                                Color(0xffF09C2B),
+                                Color(0xff7EAFE0),
+                              ],
+                              //   colors: [Color(0xffF8C8A7), Color(0xff7FEC74)],
                             ),
                           ),
                           child: const Text("欢迎使用心情日记>"),
