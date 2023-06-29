@@ -126,3 +126,9 @@ flutter:
      - family: mo #字体名
        fonts:
          - asset: assets/fonts/sanjipomo.ttf
+     - family: d
+       fonts:
+         - asset: assets/fonts/iconfont_d.ttf
+     - family: bct
+       fonts:
+         - asset: assets/fonts/iconfont_bct.ttf

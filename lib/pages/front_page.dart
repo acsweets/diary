@@ -1,5 +1,5 @@
+import 'package:diary/common.dart';
 import 'package:flutter/material.dart';
-
 import 'home_page.dart';
 import 'journal_page.dart';
 import 'mine_page.dart';
@@ -18,39 +18,39 @@ class _FrontPageState extends State<FrontPage> {
     const JournalPage(),
     const MinePage(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _tabPages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 12.0,
-        // 被选中时的字体大小
-        unselectedFontSize: 16.0,
+        unselectedFontSize: 14.0,
         // 未被选中时的字体大小
-        showSelectedLabels: true,
+        showSelectedLabels: false,
         // 被选中时是否显示Label
-        showUnselectedLabels: true,
+        showUnselectedLabels: false,
         // 未被选中时是否显示Label
         enableFeedback: true,
         //点击会产生咔嗒声，长按会产生短暂的振动
-        selectedItemColor: Colors.black,
+        selectedItemColor:const Color(0xffCADBE5),
         // 设置被选中时的图标颜色
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: const Color(0xff8486F8),
         // 设置未被选中时的图标颜色
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_note, size: 24.0),
+            icon: Icon(IconFont.write, size: 30.w,color: Color(0xffFDE5B1),),
             label: '主页',
+            activeIcon:Icon(IconFont.mine_active, size: 35.w,),
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_outlined, size: 24.0),
+            icon: Icon(IconFont.diary, size: 35.w,color: const Color(0xffF4C2FA),),
             label: '日记',
+            activeIcon:Icon(IconFont.mine_active, size: 35.w,),
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, size: 24.0),
+            icon: Icon(IconFont.mine, size: 30.w,color: const Color(0xffA0DDDC),),
+            activeIcon:Icon(IconFont.mine_active, size: 35.w,),
             label: '我的',
             backgroundColor: Colors.white,
           ),
