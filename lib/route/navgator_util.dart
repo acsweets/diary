@@ -37,4 +37,57 @@ class NavigatorUtil {
       return Future(() => null);
     }
   }
+
+//渐变透明
+  static Future goNewPageFadeRouter(BuildContext context, Widget? routeName, {bool replace = false}) {
+    if (routeName != null) {
+      if (replace) {
+        return Navigator.of(context).pushReplacement(
+          FadeRouter(child: routeName),
+        );
+      } else {
+        return Navigator.of(context).push(
+          FadeRouter(child: routeName),
+        );
+      }
+    } else {
+      return Future(() => null);
+    }
+  }
+
+//缩放路由
+  static Future goNewPageScaleRouter(BuildContext context, Widget? routeName, {bool replace = false}) {
+    if (routeName != null) {
+      if (replace) {
+        return Navigator.of(context).pushReplacement(
+          ScaleRouter(child: routeName),
+        );
+      } else {
+        return Navigator.of(context).push(
+          ScaleRouter(child: routeName),
+        );
+      }
+    } else {
+      return Future(() => null);
+    }
+  }
+
+  //自定义动画路由
+
+  static Future goNewPageCustomPageRoute(BuildContext context, Widget? routeName, String lottieAnimationPath,
+      {bool replace = false}) {
+    if (routeName != null) {
+      if (replace) {
+        return Navigator.of(context).pushReplacement(
+          CustomPageRoute(child: routeName, lottieAnimationPath: lottieAnimationPath),
+        );
+      } else {
+        return Navigator.of(context).push(
+          CustomPageRoute(child: routeName, lottieAnimationPath: lottieAnimationPath),
+        );
+      }
+    } else {
+      return Future(() => null);
+    }
+  }
 }

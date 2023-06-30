@@ -8,3 +8,6 @@ export 'utils/device_utils.dart';
 export 'route/navgator_util.dart';
 export 'utils/icon_font.dart';
 export 'utils/r.dart';
+export 'utils/permission_util.dart';
+export 'route/route_util.dart';
+export 'package:lottie/lottie.dart';

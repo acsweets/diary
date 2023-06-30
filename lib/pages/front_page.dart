@@ -21,6 +21,7 @@ class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: _tabPages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedFontSize: 14.0,
