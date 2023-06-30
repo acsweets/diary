@@ -185,7 +185,7 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          NavigatorUtil.goNewPageCustomPageRoute(context, const FrontPage(),"assets/anim/loading.json",replace: false);
+                          NavigatorUtil.goNewPageCustomPageRoute(context, const FrontPage(),"assets/anim/loading.json",replace: true);
 
                           // Navigator.of(context).pushReplacement(
                           //   MaterialPageRoute(builder: (context) => const FrontPage()),);

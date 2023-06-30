@@ -3,6 +3,7 @@ import 'package:diary/pages/guide_pages.dart';
 import 'package:flutter/material.dart';
 import 'common.dart';
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SpUtil.getInstance();
   runApp(
       ScreenUtilInit(designSize: const Size(414, 896), builder: (_, child) => const MyApp()),
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner :false,
       title: '心情日记  ',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+       primarySwatch: Colors.blue,
       ),
       home:   const SplashPage(),
     );

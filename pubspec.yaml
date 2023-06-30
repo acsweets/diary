@@ -45,6 +45,7 @@ dependencies:
   device_info_plus: ^9.0.2 #设备基本信息
   package_info_plus: ^4.0.2 #应用包信息
   permission_handler: ^10.4.0 #获取权限
+  image_picker: ^1.0.0 #选择图片+拍照
   lottie: ^2.4.0 #lottie动画
 
   modal_bottom_sheet:
@@ -81,6 +82,7 @@ flutter:
   assets:
     - assets/
     - assets/anim/
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
