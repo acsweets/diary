@@ -262,7 +262,7 @@ class _RoutePageState extends State<RoutePage> with SingleTickerProviderStateMix
             height: 200.w,
             child: Center(
               child: Lottie.asset(
-                repeat: true,
+                repeat: false,
                 widget.lottieAnimationPath,
                 fit: BoxFit.cover,
                 animate: true,

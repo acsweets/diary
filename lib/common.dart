@@ -11,3 +11,4 @@ export 'utils/r.dart';
 export 'utils/permission_util.dart';
 export 'route/route_util.dart';
 export 'package:lottie/lottie.dart';
+export 'utils/sp_util.dart';

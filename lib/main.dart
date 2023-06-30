@@ -2,8 +2,11 @@ import 'package:diary/pages/front_page.dart';
 import 'package:diary/pages/guide_pages.dart';
 import 'package:flutter/material.dart';
 import 'common.dart';
-void main() {
-  runApp( ScreenUtilInit(designSize: const Size(414, 896), builder: (_, child) => const MyApp()));
+Future<void> main() async {
+  await SpUtil.getInstance();
+  runApp(
+      ScreenUtilInit(designSize: const Size(414, 896), builder: (_, child) => const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
