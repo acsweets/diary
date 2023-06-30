@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:diary/common.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   const ImagePickerWidget({super.key});
@@ -46,7 +47,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
   Widget _ImageView(imgPath) {
 
     if (imgPath == null) {
-      return Center(
+      return const Center(
         child: Text("请选择图片或拍照"),
       );
     } else {
@@ -57,6 +58,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
 
   /*拍照*/
   _takePhoto() async {
+    PermissionUtil.checkPermissionStatus(Permission.camera);
     XFile? image = await imagePicker.pickImage(source: ImageSource.camera);
 
     setState(() {
@@ -66,6 +68,7 @@ class _ImagePickerState extends State<ImagePickerWidget> {
 
   /*相册*/
   _openGallery() async {
+    PermissionUtil.checkPermissionStatus(Permission.photos);
     XFile? image = await imagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       _imgPath = image;

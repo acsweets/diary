@@ -6,6 +6,10 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>记录心情</string>
+	<key>NSCameraUsageDescription</key>
+    <string>需要访问相机以拍摄照片</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>需要访问相册以选择照片</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
