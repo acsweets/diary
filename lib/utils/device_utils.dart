@@ -23,39 +23,38 @@ class DeviceUtils {
   static bool get isFuchsia => Platform.isFuchsia;
 
   static bool get isIOS => Platform.isIOS;
-
   /// 屏幕宽
   ///
   static double width(context) {
-    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
+    MediaQueryData mediaQuery =  MediaQuery.of(context);
     return mediaQuery.size.width;
   }
 
   /// 屏幕高
   ///
   static double height(context) {
-    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
+    MediaQueryData mediaQuery =  MediaQuery.of(context);
     return mediaQuery.size.height;
   }
 
   /// 标题栏高度（包括状态栏）
   ///
   static double navigationBarHeight(context) {
-    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
+    MediaQueryData mediaQuery = MediaQuery.of(context);
     return mediaQuery.padding.top + kToolbarHeight;
   }
 
   /// 状态栏高度
   ///
   static double topSafeHeight(context) {
-    MediaQueryData mediaQuery = MediaQueryData.fromView((context));
+    MediaQueryData mediaQuery = MediaQuery.of(context);
     return mediaQuery.padding.top;
   }
 
   /// 底部状态栏高度
   ///
   static double bottomSafeHeight(context) {
-    MediaQueryData mediaQuery = MediaQueryData.fromView(context);
+    MediaQueryData mediaQuery =  MediaQuery.of(context);
     return mediaQuery.padding.bottom;
   }
 

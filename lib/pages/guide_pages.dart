@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:diary/common.dart';
 import 'package:flutter/material.dart';
-import 'front_page.dart';
 
 ///启动页
 class SplashPage extends StatefulWidget {
@@ -185,7 +184,7 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          NavigatorUtil.goNewPageCustomPageRoute(context, const FrontPage(),"assets/anim/loading.json",replace: true);
+                          NavigatorUtil.goNewPageCustomPageRoute(context, const LoginPage(),"assets/anim/loading.json",replace: true);
 
                           // Navigator.of(context).pushReplacement(
                           //   MaterialPageRoute(builder: (context) => const FrontPage()),);

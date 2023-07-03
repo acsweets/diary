@@ -12,4 +12,7 @@ export 'utils/permission_util.dart';
 export 'route/route_util.dart';
 export 'package:lottie/lottie.dart';
 export 'utils/sp_util.dart';
-export 'utils/date_util.dart';
+export 'utils/data_util.dart';
+export 'pages/login_page.dart';
+export 'pages/front_page.dart';
+export 'pages/guide_pages.dart';
