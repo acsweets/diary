@@ -7,11 +7,9 @@ class ApiBean {
 
   static ApiBean fromJson(Map<String, dynamic> map) {
     ApiBean api = ApiBean();
-
     api.msg = map["msg"];
     api.status = map["status"];
     api.data = map["data"];
-
     return api;
   }
 }

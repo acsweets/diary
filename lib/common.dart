@@ -20,3 +20,6 @@ export 'package:jwt_decoder/jwt_decoder.dart';
 export 'http/api.dart';
 export 'http/dio_util.dart';
 export 'bean/api_bean.dart';
+export 'bean/login_bean.dart';
+export 'pages/register_page.dart';
+export 'widget/input_box_widget.dart';
