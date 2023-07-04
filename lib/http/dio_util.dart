@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-
 import '../common.dart';
 
 class DioManager{
+  TokenInterceptors? tokenInterceptors;
 
   static final DioManager _instance = DioManager._internal();
 
@@ -10,74 +10,70 @@ class DioManager{
 
   static Dio? _dio;
 
-  DioManager._internal({String? baseUrl, String? cookieId, String? language}) {
-    if (null == _dio) {
-      _dio = Dio(BaseOptions(
-          baseUrl: baseUrl!, connectTimeout: const Duration(seconds: 60), receiveTimeout: const Duration(seconds: 60)));
-      _dio!.interceptors
-        ..add(HeaderInterceptor(cookieId: cookieId, language: language))
-        ..add(ErrorInterceptor());
+  DioManager._internal() {
+    _dio ??= Dio(BaseOptions(
+          baseUrl: Api.Base_Url, connectTimeout: const Duration(seconds: 60), receiveTimeout: const Duration(seconds: 60)));
+  }
+
+  /// Post请求
+  Future<Map<String, dynamic>?> post(url,
+      {Map<String, dynamic>? parameters, dynamic data, Options? options, withLoading = true}) async {
+    print('postRequest:==>path:$url   params:$data');
+    Response? response;
+    try {
+      response = await _dio!.post(url, queryParameters: parameters, data: data, options: options);
+      print('postResponse==>:${response.data}');
+    } on DioException catch (e) {
+      print('postError:==>errorType:${e.type}   errorMsg:${e.message}');
     }
+    ///response.data  请求成功是一个map最终需要将map进行转换 , 请求失败直接返回null
+    ///map:转换 ,将List中的每一个条目执行 map方法参数接收的这个方法,这个方法返回T类型，
+    ///map方法最终会返回一个  Iterable<T>
+    return response?.data;
+  }
+
+
+  void setToken(String token) {
+    print('---token---$token-------');
+    tokenInterceptors = TokenInterceptors(token: token);
+    _dio!.interceptors.add(tokenInterceptors!);
+  }
+
+  void deleteToken() {
+    _dio!.interceptors.remove(tokenInterceptors);
+  }
+
+  void rebase(String baseIp) {
+    _dio!.options.baseUrl = baseIp;
   }
 }
-class HeaderInterceptor extends InterceptorsWrapper {
-  String? cookieId;
-  String? language;
 
-  HeaderInterceptor({this.cookieId, this.language = "zh"});
+
+const String _kTokenKey = 'Authorization';
+const String _kTokenPrefix = 'Bearer ';
+
+class TokenInterceptors<T> extends InterceptorsWrapper {
+  String token;
+
+  TokenInterceptors({this.token = ''});
+
+  void Function()? onTokenDisabled;
 
   @override
-  onRequest(RequestOptions options, handler) async {
-    // options.headers[Keys.COOKIE_ID] = Context().cookieId;
-    // options.headers[Keys.DEVICE] = EnumToString.parse(Platform.isIOS ? Device.IOS : Device.Android);
-    // options.headers[Keys.CONTENT_TYPE] = "application/json; charset=utf-8";
-    // options.headers[Keys.APP_TYPE] = Config().headerAppType;
-    // options.headers[Keys.APP_VERSION] = Context().version;
-    // options.headers[Keys.OS_VERSION] = Context().osVersion;
-    // options.headers[Keys.DEVICE_ID] = Context().deviceId;
-    // options.headers[Keys.LANGUAGE] = language ?? 'zh';
-    // options.headers[Keys.COMPANY] = Config().companyId;
-    // options.headers[Keys.TIME_ZONE] = 'Asia/Shanghai';
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    if (token != '') {
+      bool disable = JwtDecoder.isExpired(token);
+      if (disable) {
+        onTokenDisabled?.call();
+      }
+    }
+    if (token.isNotEmpty) {
+      options.headers[_kTokenKey] = '$_kTokenPrefix$token';
+    }
     return handler.next(options);
   }
+
+
+
 }
 
-class ErrorInterceptor extends Interceptor {
-  late DateTime startTime;
-  late DateTime endTime;
-
-  String path = "";
-
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    //继续调用下一个请求拦截器
-    startTime = DateTime.now();
-    path = options.path;
-    return handler.next(options);
-  }
-
-  @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    //继续调用下个响应拦截器
-    return handler.next(response);
-  }
-
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    endTime = DateTime.now();
-    int duration = endTime
-        .difference(startTime)
-        .inMilliseconds;
-    Map<String, dynamic> map = {};
-    map["type"] = "error";
-    map["time"] = "${DateUtil.getDateStrByMs(endTime.millisecondsSinceEpoch)}";
-    map["url"] = path;
-    map["duration"] = duration;
-    map["error"] = err.toString();
-    map['errorMessage'] = err.message;
-    map['errorType'] = err.type;
-    map['stackTrace'] = err.stackTrace.toString();
-    //继续调用下一个错误拦截器
-    return handler.next(err);
-  }
-}

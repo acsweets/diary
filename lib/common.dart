@@ -16,3 +16,7 @@ export 'utils/data_util.dart';
 export 'pages/login_page.dart';
 export 'pages/front_page.dart';
 export 'pages/guide_pages.dart';
+export 'package:jwt_decoder/jwt_decoder.dart';
+export 'http/api.dart';
+export 'http/dio_util.dart';
+export 'bean/api_bean.dart';
