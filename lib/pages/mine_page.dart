@@ -35,60 +35,9 @@ class _MinePageState extends State<MinePage> {
                   },
                   child: headerWidget()),
               //列表 cell
-              /*          Column(
+                        Column(
                   children: [
-                    const SizedBox(height: 10,),
-                    const MineCell(
-                      imageName: 'images/微信支付.png',
-                      title: '支付',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const MineCell(
-                      imageName: 'images/微信收藏.png',
-                      title: '收藏',
-                    ),
-                    //cell 底部分割线
-                    Row(
-                      children: <Widget>[
-                        //左右
-                        Container(width: 50, height: 0.5, color: Colors.white),
-                        //Container(height: 0.5, color: Colors.grey)
-                      ],
-                    ),
-                    const MineCell(
-                      imageName: 'images/微信相册.png',
-                      title: '相册',
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Container(width: 50, height: 0.5, color: Colors.white),
-                        Container(height: 0.5, color: Colors.grey)
-                      ],
-                    ),
-                    const MineCell(
-                      imageName: 'images/微信卡包.png',
-                      title: '卡包',
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Container(width: 50, height: 0.5, color: Colors.white),
-                        Container(height: 0.5, color: Colors.grey)
-                      ],
-                    ),
-                    const MineCell(
-                      imageName: 'images/微信表情.png',
-                      title: '表情',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const MineCell(
-                      imageName: 'images/微信设置.png',
-                      title: '设置',
-                    ),
-                  ])*/
+                  ])
             ],
           ),
         ),

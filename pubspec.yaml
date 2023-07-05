@@ -49,6 +49,8 @@ dependencies:
   image_picker: ^1.0.0 #选择图片+拍照
   lottie: ^2.4.0 #lottie动画
   jwt_decoder: ^2.0.1 #查看token的还有时间
+  bloc: ^8.1.2 #状态管理
+  flex_color_picker: ^3.2.2 #选颜色
 
   modal_bottom_sheet:
     git:
