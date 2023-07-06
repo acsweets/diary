@@ -23,3 +23,8 @@ export 'bean/api_bean.dart';
 export 'bean/login_bean.dart';
 export 'pages/register_page.dart';
 export 'widget/input_box_widget.dart';
+export 'provider/provider_view_widget.dart';
+export 'model/login_model.dart';
+export 'package:bot_toast/bot_toast.dart';
+export 'model/base_model.dart';
+export 'pages/new_login_page.dart';

@@ -1,5 +1,7 @@
 import 'package:diary/common.dart';
+import 'package:diary/provider/color_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'home_page.dart';
 import 'journal_page.dart';
 import 'mine_page.dart';
@@ -41,7 +43,7 @@ class _FrontPageState extends State<FrontPage> {
             icon: Icon(IconFont.write, size: 30.w,color: Color(0xffFDE5B1),),
             label: '主页',
             activeIcon:Icon(IconFont.mine_active, size: 35.w,),
-            backgroundColor: Colors.white,
+            backgroundColor: Provider.of<ColorModel>(context).themeColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(IconFont.diary, size: 35.w,color: const Color(0xffF4C2FA),),

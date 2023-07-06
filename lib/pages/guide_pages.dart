@@ -185,8 +185,7 @@ class _GuidePageState extends State<GuidePage> with SingleTickerProviderStateMix
                       child: InkWell(
                         onTap: () {
                        //   NavigatorUtil.goNewPageCustomPageRoute(context, const LoginPage(),"assets/anim/loading.json",replace: true);
-
-                        NavigatorUtil.goNewPageFadeRouter(context, const LoginPage());
+                        NavigatorUtil.goNewPageFadeRouter(context, const NewLoginPage());
                         },
                         child: Container(
                           width: 150,
